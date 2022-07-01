@@ -1,22 +1,30 @@
 #ifndef PERSON_H
 #define PERSON_H
 
-//represente the starting floor and the arrival floor of a person
 typedef struct _Person {
     int src;
     int dest;
-}Person;
+} Person;
 
-//represente a list of persons with the last person and the list of persons who are ahead
-typedef struct _PersonList {
+Person* create_person(int src, int dest);
+
+//linked list 
+typedef struct _Element {
     Person* person;
-    struct _PersonList *next;
-} PersonList;
+    struct _Element* next;
+} Element;
 
-//create a person from his starting floor and his arrival floor
-Person* createPerson(int src, int dest);
+//to find the begining of the linked list
+typedef struct _List {
+    Element* first;  // it's a pointer on the first element of the linked list
+} List;
 
-//add a person to the list using a previous list
-PersonList* insert(Person *p, PersonList *list);
+//to create a empty linked list which point on NULL
+List* init_list();
+
+//insert a new element on the linked list
+void insert(Person* person, List* list);
+
+
 
 #endif
