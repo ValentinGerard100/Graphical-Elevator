@@ -17,13 +17,16 @@ typedef struct _Element {
 //to find the begining of the linked list
 typedef struct _List {
     Element* first;  // it's a pointer on the first element of the linked list
-} List;
+    int nbElement;
+    } List;
 
 //to create a empty linked list which point on NULL
 List* init_list();
 
 //insert a new element on the linked list
 void insert(Person* person, List* list);
+
+
 
 
 

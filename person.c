@@ -14,15 +14,13 @@ Person* create_person(int src, int dest){
 
 List* init_list(){
     List* res = NULL;
-    Element* e = NULL;
     res = malloc(sizeof(List));// memory allocations
-    e = malloc(sizeof(Element));
-    if(res == NULL || e == NULL){
-        exit(0); // to test if the  both memory allocations are successful
+    if(res == NULL){
+        exit(0); // to test if the  memory allocation is  successful
     }
-    e->person = NULL; // the first person of the linked list is NULL
-    e->next = NULL; // the following of the linked list is NULL
-    res->first = e; 
+    Element* e = NULL;// the first element of each linked list is NULL
+    res->first = e;
+    res->nbElement = 0; 
     return res;
 }
 
@@ -35,4 +33,6 @@ void insert(Person* person, List* list){
     e->person = person;
     e->next = list->first; // put this new element at the begining of the linked list 
     list->first = e; //move of the pointer on the new first element of the linked list
+    list->nbElement += 1;
 }
+
