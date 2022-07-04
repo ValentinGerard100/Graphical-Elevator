@@ -5,6 +5,7 @@
 typedef  struct _Elevator {
     int capacity;
     int currentFloor;
+    int targetFloor;
     List* persons;  //persons who are in the elevator
 } Elevator;
 
@@ -14,4 +15,13 @@ void exit_elevator(Elevator* e);
 
 void enter_elevator(Elevator* e, List* waitingList);
 
+typedef struct _Building {
+    int nbFloor;
+    List** waitingLists;
+    Elevator* elevator;
+}Building;
+
+Building* create_building(int nbFloor, List** waitingLists, Elevator* elevator);
+
+void stepElevator(Building* b);
 #endif
