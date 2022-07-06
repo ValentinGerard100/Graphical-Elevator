@@ -14,7 +14,7 @@ Person* create_person(int src, int dest){
 
 List* init_list(){
     List* res = NULL;
-    res = malloc(sizeof(List));// memory allocations
+    res = malloc(sizeof(List));
     if(res == NULL){
         exit(0); // to test if the  memory allocation is  successful
     }
@@ -26,7 +26,7 @@ List* init_list(){
 
 void insert(Person* person, List* list){
     Element* e = NULL;
-    e = malloc(sizeof(Element));// memory allocation
+    e = malloc(sizeof(Element));
     if(e == NULL){
         exit(0);
     }// to test if the memory allocation is successful
@@ -36,3 +36,20 @@ void insert(Person* person, List* list){
     list->nbElement += 1;
 }
 
+//to copy a list at an other adress 
+List* copy_list(List* l){
+    List* res = init_list();
+    List* reverse = init_list();
+    Element* m_p = l->first;  //pointer which move from the begining to the end of the linkedlist
+    while(m_p != NULL){
+        insert(m_p->person,reverse);
+        m_p = m_p->next;
+    }
+    //reverse is now a copy of the linkdlist but in reverse order
+    while(reverse->first != NULL){
+        insert(reverse->first->person, res);
+        reverse->first = reverse->first->next;
+    }
+    // res is now a copy of the linkedlist in the good order 
+    return res;
+}  

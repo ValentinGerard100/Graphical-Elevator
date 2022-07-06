@@ -15,11 +15,11 @@ all : $(EXEC)
 
 #to create executable files
 $(EXEC): $(OBJ)
-	gcc -o $@ $^
+	gcc -o $@ $^ -lncurses
 
 #to create object files
 %.o : %.c
-	gcc -o $@ -c $<
+	gcc -o $@ -c $< -lncurses
 
 #to remove the all the object file in the directory
 clean :
